@@ -101,6 +101,11 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	private void Shake(float duration, float magnitude)
+	{
+		StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(duration, magnitude));
+	}
+
 	private void HorizontalMovement()
 	{
 		//Get the raw input
