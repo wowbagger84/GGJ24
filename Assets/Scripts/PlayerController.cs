@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
 	[Header("Jump")]
 	public float jumpPower = 8; //How strong our jump is
-	public float groundCheckDistance = 0.1f; //how far outsie our character we should raycast
+	public float groundCheckDistance = 0.05f; //how far outsie our character we should raycast
 
 	bool onGround = true; //checks if we are on the ground
 	float groundCheckLenght; //Length of the raycast
@@ -24,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
 	SpriteRenderer sprite;
 
+	Animator animator;
+
 	private void Start()
 	{
 		//Change project setting for raycast since they start inside colliders
@@ -31,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
 		rb2D = GetComponent<Rigidbody2D>(); //assign our ref.
 		sprite = GetComponent<SpriteRenderer>();
+		animator = GetComponent<Animator>();
 
 		//Calculate player size based on our colliders, lenght of raycast
 		var collider = GetComponent<Collider2D>();
@@ -44,6 +49,11 @@ public class PlayerController : MonoBehaviour
 		Jump(); //handles jump
 
 		GravityAdjust(); //adjusts gravity
+
+		if (onGround)
+		{
+			animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+		}
 	}
 
 	private void GravityAdjust()
@@ -77,7 +87,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		//Raycast, check if there is anything under us.
-		onGround = Physics2D.Raycast(transform.position, Vector2.down, groundCheckLenght);
+		onGround = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance);
 
 		//Restet our counter if we are on the ground.
 		if (onGround)
@@ -108,6 +118,7 @@ public class PlayerController : MonoBehaviour
 		//Now we can move with the rigidbody and we get propper collisions
 		rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
 
+		//Flip our sprite based on our velocity
 		sprite.flipX = velocityX < 0;
 	}
 }
