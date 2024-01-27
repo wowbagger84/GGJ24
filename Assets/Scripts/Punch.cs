@@ -34,7 +34,8 @@ public class Punch : MonoBehaviour
 		else
 		{
 			//We are in the intro scene
-
+			lineCooldown = 0.5f;
+			punchCooldown = 10;
 			jokes = new List<List<string>>();
 			var joke2 = new List<string>();
 			joke2.Add("Why did the joke hurt so much?");

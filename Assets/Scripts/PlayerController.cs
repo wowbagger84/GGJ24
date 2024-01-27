@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 		if (onGround)
 		{
 			animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
-			rb2D.sharedMaterial = null;
+
 		}
 
 		animator.SetFloat("Y", rb2D.velocity.y);
@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour
 				footTrail.Play();
 				var newEffect = Instantiate(jumpEffect, transform.position, Quaternion.identity);
 				Destroy(newEffect, 1);
+				rb2D.sharedMaterial = null;
 			}
 			animator.SetTrigger("Land");
 		}
