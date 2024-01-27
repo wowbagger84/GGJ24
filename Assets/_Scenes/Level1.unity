@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 43397651}
   - component: {fileID: 43397650}
   - component: {fileID: 43397653}
-  - component: {fileID: 43397652}
+  - component: {fileID: 43397654}
   m_Layer: 0
   m_Name: gate2
   m_TagString: Untagged
@@ -277,19 +277,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &43397652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43397649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b7e4bace58c95a43b60acafbadd7bd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LevelName: Credits
 --- !u!61 &43397653
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -335,6 +322,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &43397654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43397649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da77c0ef5b7ee446b6855e5578ef2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextLevelName: Credits
 --- !u!1 &451045796
 GameObject:
   m_ObjectHideFlags: 0
