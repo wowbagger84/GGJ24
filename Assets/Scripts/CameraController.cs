@@ -4,37 +4,36 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform target;
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset;
+	public Transform target;
+	public float smoothSpeed = 0.125f;
+	public Vector3 offset;
 
-    private bool updateYPosition = false;
+	private bool updateYPosition = false;
 
-    void LateUpdate()
-{
-    float desiredPositionY;
+	void LateUpdate()
+	{
+		float desiredPositionY;
 
-    if (updateYPosition || target.position.y + offset.y < transform.position.y)
-    {
-        desiredPositionY = target.position.y + offset.y;
-    } 
-    else 
-    {
-        desiredPositionY = transform.position.y;
-    }
+		if (updateYPosition || target.position.y + offset.y < transform.position.y)
+		{
+			desiredPositionY = target.position.y + offset.y;
+		}
+		else
+		{
+			desiredPositionY = transform.position.y;
+		}
 
-    float desiredPositionX = target.position.x + offset.x;
-    float desiredPositionZ = target.position.z + offset.z;
+		float desiredPositionX = target.position.x + offset.x;
+		float desiredPositionZ = target.position.z + offset.z;
 
-    Vector3 desiredPosition = new Vector3(desiredPositionX, desiredPositionY, desiredPositionZ);
-    Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-    transform.position = smoothedPosition;
-}
+		Vector3 desiredPosition = new Vector3(desiredPositionX, desiredPositionY, desiredPositionZ);
+		Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+		transform.position = smoothedPosition;
+	}
 
 
-    public void UpdateYPosition(bool updatedYPosition)
-    {
-        updateYPosition = updatedYPosition;
-        Debug.Log(updateYPosition.ToString());
-    }
+	public void UpdateYPosition(bool updatedYPosition)
+	{
+		updateYPosition = updatedYPosition;
+	}
 }

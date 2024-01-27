@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
+using UnityEngine;
 
 public class Punch : MonoBehaviour
 {
@@ -13,8 +13,9 @@ public class Punch : MonoBehaviour
 	public List<string> joke;
 	public int jokeLineIndex = 0;
 
-	//TODO: read/parse the text from the punchline system, scriptable object?
-	//TODO: cycle jokes, so all have been used before repeating
+	float lineCooldown = 0.1f;
+	float punchCooldown = 0.3f; //Extra cooldown for punchlines
+	float timer = 0;
 
 	// Start is called before the first frame update
 	void Start()
@@ -57,17 +58,17 @@ public class Punch : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		
-		if (Input.GetButtonDown("Fire1"))
+
+		if (Input.GetButtonDown("Fire1") && timer > lineCooldown)
 		{
-			//TODO: spawn the next joke line or punchline
-			
+			//spawn the next joke line or punchline
 			if (jokeLineIndex < joke.Count - 1)
 			{
 				var newLine = Instantiate(jokeLinePrefab, punchSpawn.position, transform.rotation);
 				newLine.GetComponent<Bubble>().text = joke[jokeLineIndex];
 				newLine.GetComponent<Bubble>().Init();
 				jokeLineIndex++;
+				timer = 0;
 			}
 			else
 			{
@@ -76,7 +77,11 @@ public class Punch : MonoBehaviour
 				newLine.GetComponent<Bubble>().Init();
 				jokeLineIndex = 0;
 				joke = jokes[Random.Range(0, jokes.Count)];
+				timer = -punchCooldown;
 			}
+
 		}
+
+		timer += Time.deltaTime;
 	}
 }

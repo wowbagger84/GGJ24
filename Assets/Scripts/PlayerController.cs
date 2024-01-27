@@ -22,16 +22,13 @@ public class PlayerController : MonoBehaviour
 	int currentJumps = 0;
 
 	Rigidbody2D rb2D; //Ref to our rigidbody
-
 	SpriteRenderer sprite;
-
 	Animator animator;
-
 	ParticleSystem footTrail;
-
 	Vector3 soundPos;
-
 	AudioManager audioManager;
+
+	public PhysicsMaterial2D noFriction;
 
 	private void Start()
 	{
@@ -60,6 +57,7 @@ public class PlayerController : MonoBehaviour
 		if (onGround)
 		{
 			animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+			rb2D.sharedMaterial = null;
 		}
 
 		animator.SetFloat("Y", rb2D.velocity.y);
@@ -86,6 +84,7 @@ public class PlayerController : MonoBehaviour
 			velocity.y = jumpPower;
 			rb2D.velocity = velocity;
 			var newEffect = Instantiate(jumpEffect, transform.position, Quaternion.identity);
+			rb2D.sharedMaterial = noFriction;
 			Destroy(newEffect, 1);
 		}
 
@@ -158,9 +157,8 @@ public class PlayerController : MonoBehaviour
 			if (Vector3.Distance(soundPos, transform.position) > 1.2f)
 			{
 				//Playsound
-				audioManager.audio.PlayPlayerRun(gameObject);
+				audioManager.audios.PlayPlayerRun(gameObject);
 
-				Debug.Log("Play sound");
 				soundPos = transform.position;
 			}
 		}
