@@ -49,25 +49,25 @@ MonoBehaviour:
     Path: event:/playerSpriteFlip
   punchlineAppear:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2007505718
+      Data2: 1102638296
+      Data3: -1298625915
+      Data4: 31264287
+    Path: event:/punchlineAppear
   punchlinePunch:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -840877183
+      Data2: 1222854605
+      Data3: 1786194083
+      Data4: -806774792
+    Path: event:/punchlinePunch
   punchlineDrop:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1668076937
+      Data2: 1197081841
+      Data3: 723354535
+      Data4: -954235450
+    Path: event:/punchlineDrop
   enemyRun:
     Guid:
       Data1: 0

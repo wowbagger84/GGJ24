@@ -78,6 +78,11 @@ public class PlayerController : MonoBehaviour
 		//if we press the button and have jumps remaining
 		if (Input.GetButtonDown("Jump") && currentJumps < maxJumps)
 		{
+			if (currentJumps == 0)
+				audioManager.audios.PlayPlayerJump(gameObject);
+			else
+				audioManager.audios.PlayPlayerDoubleJump(gameObject);
+
 			currentJumps++;
 			//Apply our jump power in the y direction
 			var velocity = rb2D.velocity;
@@ -150,6 +155,11 @@ public class PlayerController : MonoBehaviour
 		rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
 
 		//Flip our sprite based on our velocity
+		if (sprite.flipX != (velocityX < 0))
+		{
+			audioManager.audios.PlayPlayerSpriteFlip(gameObject);
+		}
+
 		sprite.flipX = velocityX < 0;
 
 		if (onGround)

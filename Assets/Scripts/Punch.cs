@@ -17,12 +17,15 @@ public class Punch : MonoBehaviour
 	float punchCooldown = 0.3f; //Extra cooldown for punchlines
 	float timer = 0;
 
+	AudioManager audioManager;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		string path = "Text/jokes";
 		jokes = ParseJokes(path);
 		joke = jokes[Random.Range(0, jokes.Count)];
+		audioManager = FindObjectOfType<AudioManager>();
 	}
 
 	List<List<string>> ParseJokes(string filePath)
@@ -68,6 +71,7 @@ public class Punch : MonoBehaviour
 				newLine.GetComponent<Bubble>().Init();
 				jokeLineIndex++;
 				timer = 0;
+				audioManager.audios.PlayPunchlineAppear(gameObject);
 			}
 			else
 			{
@@ -77,6 +81,7 @@ public class Punch : MonoBehaviour
 				jokeLineIndex = 0;
 				joke = jokes[Random.Range(0, jokes.Count)];
 				timer = -punchCooldown;
+				audioManager.audios.PlayPunchlinePunch(gameObject);
 			}
 
 		}
