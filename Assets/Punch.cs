@@ -5,7 +5,11 @@ using UnityEngine;
 public class Punch : MonoBehaviour
 {
 	public GameObject punchPrefab;
+	public GameObject jokeLinePrefab;
 	public Transform punchSpawn;
+
+	//TODO: read/parse the text from the punchline system, scriptable object?
+	//TODO: cycle jokes, so all have been used before repeating
 
 	// Start is called before the first frame update
 	void Start()
@@ -18,6 +22,8 @@ public class Punch : MonoBehaviour
 	{
 		if (Input.GetButtonDown("Fire1"))
 		{
+			//TODO: spawn the next joke line or punchline
+
 			Instantiate(punchPrefab, punchSpawn.position, transform.rotation);
 		}
 	}
