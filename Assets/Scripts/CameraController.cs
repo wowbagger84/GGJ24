@@ -8,10 +8,33 @@ public class CameraController : MonoBehaviour
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
 
+    private bool updateYPosition = false;
+
     void LateUpdate()
+{
+    float desiredPositionY;
+
+    if (updateYPosition || target.position.y + offset.y < transform.position.y)
     {
-        Vector3 desiredPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
+        desiredPositionY = target.position.y + offset.y;
+    } 
+    else 
+    {
+        desiredPositionY = transform.position.y;
+    }
+
+    float desiredPositionX = target.position.x + offset.x;
+    float desiredPositionZ = target.position.z + offset.z;
+
+    Vector3 desiredPosition = new Vector3(desiredPositionX, desiredPositionY, desiredPositionZ);
+    Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+    transform.position = smoothedPosition;
+}
+
+
+    public void UpdateYPosition(bool updatedYPosition)
+    {
+        updateYPosition = updatedYPosition;
+        Debug.Log(updateYPosition.ToString());
     }
 }

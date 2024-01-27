@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour
 		//Restet our counter if we are on the ground.
 		if (onGround)
 		{
+			Camera.main.GetComponent<CameraController>().UpdateYPosition(true);
 			currentJumps = 0;
 			if (!footTrail.isPlaying)
 			{
@@ -114,6 +115,7 @@ public class PlayerController : MonoBehaviour
 		}
 		else
 		{
+			Camera.main.GetComponent<CameraController>().UpdateYPosition(false);
 			if (footTrail.isPlaying)
 				footTrail.Stop();
 		}
