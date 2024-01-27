@@ -286,6 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rollSpeed: 80
   moveSpeed: 3
+  deathEffect: {fileID: 3987383630858829260, guid: 46184f9522c65ca46abc074cc3e9d3db, type: 3}
 --- !u!4 &121591914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2087712941136990156, guid: 84204b954557c6b4fbcafb4ea3106630, type: 3}
