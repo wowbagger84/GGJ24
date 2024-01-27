@@ -10,6 +10,8 @@ public class Bubble : MonoBehaviour
 	public bool jokeLine = false;
 	public string text = "PUNCHLINE!";
 
+	public GameObject hitPrefab;
+
 	float myFloat = 0;
 	BoxCollider2D myCollider;
 	float size = 0;
@@ -55,5 +57,14 @@ public class Bubble : MonoBehaviour
 	private void OnDestroy()
 	{
 		DOTween.KillAll();
+	}
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (!collision.gameObject.CompareTag("Player"))
+		{
+			var effect = Instantiate(hitPrefab, collision.contacts[0].point, transform.rotation);
+			Destroy(effect, 2);
+		}
 	}
 }
