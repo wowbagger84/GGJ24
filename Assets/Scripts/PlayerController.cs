@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerController : MonoBehaviour
@@ -30,6 +32,8 @@ public class PlayerController : MonoBehaviour
 	Animator animator;
 
 	ParticleSystem footTrail;
+
+	private AudioManager audioManager;
 
 	private void Start()
 	{
@@ -83,6 +87,8 @@ public class PlayerController : MonoBehaviour
 			rb2D.velocity = velocity;
 			var newEffect = Instantiate(jumpEffect, transform.position, Quaternion.identity);
 			Destroy(newEffect, 1);
+			
+			audioManager.audio.PlayEnemyDeath(gameObject);
 		}
 
 		if (Input.GetButtonUp("Jump") && rb2D.velocity.y > 0)
