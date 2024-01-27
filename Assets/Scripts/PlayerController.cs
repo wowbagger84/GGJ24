@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
 	Vector3 soundPos;
 
+	AudioManager audioManager;
+
 	private void Start()
 	{
 		//Change project setting for raycast since they start inside colliders
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
 		sprite = GetComponent<SpriteRenderer>();
 		animator = GetComponent<Animator>();
 		footTrail = GetComponentInChildren<ParticleSystem>();
+		audioManager = FindObjectOfType<AudioManager>();
 
 		//Calculate player size based on our colliders, lenght of raycast
 		var collider = GetComponent<Collider2D>();
@@ -74,7 +77,6 @@ public class PlayerController : MonoBehaviour
 
 	private void Jump()
 	{
-
 		//if we press the button and have jumps remaining
 		if (Input.GetButtonDown("Jump") && currentJumps < maxJumps)
 		{
@@ -105,10 +107,10 @@ public class PlayerController : MonoBehaviour
 			{
 				//Shake(0.1f, 0.1f);
 				footTrail.Play();
-				animator.SetTrigger("Land");
 				var newEffect = Instantiate(jumpEffect, transform.position, Quaternion.identity);
 				Destroy(newEffect, 1);
 			}
+			animator.SetTrigger("Land");
 		}
 		else
 		{
@@ -151,10 +153,10 @@ public class PlayerController : MonoBehaviour
 
 		if (onGround)
 		{
-			if (Vector3.Distance(soundPos, transform.position) > 1f)
+			if (Vector3.Distance(soundPos, transform.position) > 1.2f)
 			{
 				//Playsound
-				//AudioManager.Instance.PlayPlayerRun(gameObject);
+				audioManager.audio.PlayPlayerRun(gameObject);
 
 				Debug.Log("Play sound");
 				soundPos = transform.position;
