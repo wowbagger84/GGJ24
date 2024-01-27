@@ -17,17 +17,20 @@ public class Bubble : MonoBehaviour
 	float size = 0;
 
 	// Start is called before the first frame update
-	void Start()
+	public void Init()
 	{
-
-		DOTween.To(() => myFloat, x => myFloat = x, 5, time).OnUpdate(UpdateCollider);
-
 		if (jokeLine)
 		{
 			Destroy(gameObject, 10);
-			transform.DOMoveY(transform.position.y + 2, time * jokeLineTime).SetEase(Ease.InSine).OnComplete(() => Destroy(gameObject));
+			transform.DOMoveY(transform.position.y + 2, time * jokeLineTime).SetEase(Ease.InSine);
 			transform.GetComponentInChildren<Image>().DOFade(0, time * jokeLineTime / 2).SetDelay(jokeLineTime / 2).SetEase(Ease.InSine);
 			GetComponentInChildren<TextMeshProUGUI>().DOFade(0, time * jokeLineTime / 2).SetDelay(jokeLineTime / 2).SetEase(Ease.InSine);
+		}
+		else
+		{
+			Destroy(gameObject, 20);
+			Invoke("Cleanup", 5);
+			transform.DOShakePosition(1.0f, 0.05f, 10, 90, false, false).SetDelay(4);
 		}
 
 		myCollider = GetComponent<BoxCollider2D>();
@@ -35,12 +38,14 @@ public class Bubble : MonoBehaviour
 		//adjust time according to the length of the text
 		size = text.Length * 8 + 30;
 
+		DOTween.To(() => myFloat, x => myFloat = x, size / 60, time).OnUpdate(UpdateCollider);
+
 		GetComponentInChildren<TextMeshProUGUI>().DOText(text, time);
 
 		if (jokeLine)
-			GetComponentInChildren<Image>().GetComponent<RectTransform>().DOSizeDelta(new Vector2(size, 30), time).SetEase(Ease.OutSine).OnComplete(Cleanup);
+			GetComponentInChildren<Image>().GetComponent<RectTransform>().DOSizeDelta(new Vector2(size, 30), time).SetEase(Ease.OutSine);
 		else
-			GetComponentInChildren<Image>().GetComponent<RectTransform>().DOSizeDelta(new Vector2(size, 30), time).SetEase(Ease.OutBack).OnComplete(Cleanup);
+			GetComponentInChildren<Image>().GetComponent<RectTransform>().DOSizeDelta(new Vector2(size, 30), time).SetEase(Ease.OutBack);
 	}
 
 	private void UpdateCollider()
@@ -51,12 +56,8 @@ public class Bubble : MonoBehaviour
 
 	void Cleanup()
 	{
-		Destroy(gameObject, 2);
-	}
-
-	private void OnDestroy()
-	{
-		DOTween.KillAll();
+		if (!jokeLine)
+			GetComponent<Rigidbody2D>().isKinematic = false;
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)

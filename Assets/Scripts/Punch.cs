@@ -30,14 +30,15 @@ public class Punch : MonoBehaviour
 			if (jokeLineIndex < joke.Length - 1)
 			{
 				var newLine = Instantiate(jokeLinePrefab, punchSpawn.position, transform.rotation);
-				newLine.GetComponent<Bubble>().jokeLine = true;
 				newLine.GetComponent<Bubble>().text = joke[jokeLineIndex];
+				newLine.GetComponent<Bubble>().Init();
 				jokeLineIndex++;
 			}
 			else
 			{
 				var newLine = Instantiate(punchPrefab, punchSpawn.position, transform.rotation);
 				newLine.GetComponent<Bubble>().text = joke[jokeLineIndex];
+				newLine.GetComponent<Bubble>().Init();
 				jokeLineIndex = 0;
 			}
 		}

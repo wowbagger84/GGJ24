@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
 	ParticleSystem footTrail;
 
+	Vector3 soundPos;
+
 	private void Start()
 	{
 		//Change project setting for raycast since they start inside colliders
@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour
 		{
 			animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
 		}
+
+		animator.SetFloat("Y", rb2D.velocity.y);
 	}
 
 	private void GravityAdjust()
@@ -101,7 +103,9 @@ public class PlayerController : MonoBehaviour
 			currentJumps = 0;
 			if (!footTrail.isPlaying)
 			{
+				//Shake(0.1f, 0.1f);
 				footTrail.Play();
+				animator.SetTrigger("Land");
 				var newEffect = Instantiate(jumpEffect, transform.position, Quaternion.identity);
 				Destroy(newEffect, 1);
 			}
@@ -144,5 +148,17 @@ public class PlayerController : MonoBehaviour
 
 		//Flip our sprite based on our velocity
 		sprite.flipX = velocityX < 0;
+
+		if (onGround)
+		{
+			if (Vector3.Distance(soundPos, transform.position) > 1f)
+			{
+				//Playsound
+				//AudioManager.Instance.PlayPlayerRun(gameObject);
+
+				Debug.Log("Play sound");
+				soundPos = transform.position;
+			}
+		}
 	}
 }

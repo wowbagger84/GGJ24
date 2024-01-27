@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRun:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1910600548
+      Data2: 1090559194
+      Data3: 315830968
+      Data4: 242394083
+    Path: event:/playerRun
   playerJump:
     Guid:
       Data1: 0
@@ -61,6 +61,13 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  punchlineDrop:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   enemyRun:
     Guid:
       Data1: 0
@@ -77,11 +84,11 @@ MonoBehaviour:
     Path: 
   enemyDeath:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -881820170
+      Data2: 1096339507
+      Data3: 73258136
+      Data4: 448748166
+    Path: event:/enemyDeath
   onMouseOver:
     Guid:
       Data1: 0
