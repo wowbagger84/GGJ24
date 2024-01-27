@@ -59,7 +59,7 @@ public class Bubble : MonoBehaviour
 		if (!jokeLine)
 		{
 			GetComponent<Rigidbody2D>().isKinematic = false;
-			FindFirstObjectByType<AudioManager>().audios.PlayPunchlineDrop(gameObject);
+			FindFirstObjectByType<AudioManager>()?.audios.PlayPunchlineDrop(gameObject);
 		}
 	}
 
@@ -70,5 +70,11 @@ public class Bubble : MonoBehaviour
 			var effect = Instantiate(hitPrefab, collision.contacts[0].point, transform.rotation);
 			Destroy(effect, 2);
 		}
+	}
+
+	private void OnDestroy()
+	{
+		transform.GetComponentInChildren<Image>().DOKill();
+		transform.DOKill();
 	}
 }

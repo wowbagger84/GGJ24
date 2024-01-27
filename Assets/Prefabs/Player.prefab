@@ -210,6 +210,7 @@ MonoBehaviour:
   punchSpawn: {fileID: 9156500908473172178}
   joke: []
   jokeLineIndex: 0
+  intro: 0
 --- !u!1 &3079902020246753964
 GameObject:
   m_ObjectHideFlags: 0

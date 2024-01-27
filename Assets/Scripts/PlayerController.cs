@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,10 +58,20 @@ public class PlayerController : MonoBehaviour
 		if (onGround)
 		{
 			animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
-			rb2D.sharedMaterial = null;
+
 		}
 
 		animator.SetFloat("Y", rb2D.velocity.y);
+
+		CheckOutOfBounds();
+	}
+
+	private void CheckOutOfBounds()
+	{
+		if (transform.position.y < -30)
+		{
+			UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+		}
 	}
 
 	private void GravityAdjust()
@@ -114,6 +125,7 @@ public class PlayerController : MonoBehaviour
 				footTrail.Play();
 				var newEffect = Instantiate(jumpEffect, transform.position, Quaternion.identity);
 				Destroy(newEffect, 1);
+				rb2D.sharedMaterial = null;
 			}
 			animator.SetTrigger("Land");
 		}

@@ -6,11 +6,11 @@ using UnityEngine;
 public class PressAnyKey : MonoBehaviour
 {
 	public string SceneToLoad = "Controls";
-	float cooldown = 0.5f;
+	float cooldown = 0.8f;
 	// Start is called before the first frame update
 	void Start()
 	{
-		transform.DOScale(1.1f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+		transform.DOScale(1.1f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetDelay(cooldown);
 	}
 
 	private void Update()
