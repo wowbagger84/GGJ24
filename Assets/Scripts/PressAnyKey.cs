@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PressAnyKey : MonoBehaviour
 {
+	public string SceneToLoad = "Controls";
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -15,7 +16,7 @@ public class PressAnyKey : MonoBehaviour
 	{
 		if (Input.anyKeyDown)
 		{
-			UnityEngine.SceneManagement.SceneManager.LoadScene("Controls");
+			UnityEngine.SceneManagement.SceneManager.LoadScene(SceneToLoad);
 		}
 	}
 
