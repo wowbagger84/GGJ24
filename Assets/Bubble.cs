@@ -59,7 +59,7 @@ public class Bubble : MonoBehaviour
 		if (!jokeLine)
 		{
 			GetComponent<Rigidbody2D>().isKinematic = false;
-			FindFirstObjectByType<AudioManager>().audios.PlayPunchlineDrop(gameObject);
+			FindFirstObjectByType<AudioManager>()?.audios.PlayPunchlineDrop(gameObject);
 		}
 	}
 

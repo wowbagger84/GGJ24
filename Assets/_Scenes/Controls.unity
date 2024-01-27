@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1af8017f5062c7478bb909ceeab402b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: Level1
+  SceneToLoad: Intro
 --- !u!114 &374854834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2060,11 +2060,11 @@ RectTransform:
   - {fileID: 634938703}
   - {fileID: 1964681435}
   - {fileID: 1273253360}
-  - {fileID: 374854832}
   - {fileID: 459313070}
   - {fileID: 444587442}
   - {fileID: 2053325587}
   - {fileID: 1668831768}
+  - {fileID: 374854832}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

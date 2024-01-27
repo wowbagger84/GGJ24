@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -61,6 +62,16 @@ public class PlayerController : MonoBehaviour
 		}
 
 		animator.SetFloat("Y", rb2D.velocity.y);
+
+		CheckOutOfBounds();
+	}
+
+	private void CheckOutOfBounds()
+	{
+		if (transform.position.y < -30)
+		{
+			UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+		}
 	}
 
 	private void GravityAdjust()

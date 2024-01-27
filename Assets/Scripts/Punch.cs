@@ -19,13 +19,29 @@ public class Punch : MonoBehaviour
 
 	AudioManager audioManager;
 
+	public bool intro = false;
+
 	// Start is called before the first frame update
 	void Start()
 	{
-		string path = "Text/jokes";
-		jokes = ParseJokes(path);
-		joke = jokes[Random.Range(0, jokes.Count)];
-		audioManager = FindObjectOfType<AudioManager>();
+		if (!intro)
+		{
+			string path = "Text/jokes";
+			jokes = ParseJokes(path);
+			joke = jokes[Random.Range(0, jokes.Count)];
+			audioManager = FindObjectOfType<AudioManager>();
+		}
+		else
+		{
+			//We are in the intro scene
+
+			jokes = new List<List<string>>();
+			var joke2 = new List<string>();
+			joke2.Add("Why did the joke hurt so much?");
+			joke2.Add("Because it was a PUNCHLINE!!");
+			jokes.Add(joke2);
+			joke = jokes[Random.Range(0, jokes.Count)];
+		}
 	}
 
 	List<List<string>> ParseJokes(string filePath)
@@ -60,7 +76,6 @@ public class Punch : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-
 		if (Input.GetButtonDown("Fire1") && timer > lineCooldown)
 		{
 			//spawn the next joke line or punchline
@@ -71,7 +86,7 @@ public class Punch : MonoBehaviour
 				newLine.GetComponent<Bubble>().Init();
 				jokeLineIndex++;
 				timer = 0;
-				audioManager.audios.PlayPunchlineAppear(gameObject);
+				audioManager?.audios.PlayPunchlineAppear(gameObject);
 			}
 			else
 			{
@@ -81,7 +96,7 @@ public class Punch : MonoBehaviour
 				jokeLineIndex = 0;
 				joke = jokes[Random.Range(0, jokes.Count)];
 				timer = -punchCooldown;
-				audioManager.audios.PlayPunchlinePunch(gameObject);
+				audioManager?.audios.PlayPunchlinePunch(gameObject);
 			}
 
 		}
