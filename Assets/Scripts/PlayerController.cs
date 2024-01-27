@@ -22,14 +22,13 @@ public class PlayerController : MonoBehaviour
 	int currentJumps = 0;
 
 	Rigidbody2D rb2D; //Ref to our rigidbody
-
 	SpriteRenderer sprite;
-
 	Animator animator;
-
 	ParticleSystem footTrail;
-
 	Vector3 soundPos;
+	AudioManager audioManager;
+
+	public PhysicsMaterial2D noFriction;
 
 	private void Start()
 	{
@@ -40,6 +39,7 @@ public class PlayerController : MonoBehaviour
 		sprite = GetComponent<SpriteRenderer>();
 		animator = GetComponent<Animator>();
 		footTrail = GetComponentInChildren<ParticleSystem>();
+		audioManager = FindObjectOfType<AudioManager>();
 
 		//Calculate player size based on our colliders, lenght of raycast
 		var collider = GetComponent<Collider2D>();
@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
 		if (onGround)
 		{
 			animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+			rb2D.sharedMaterial = null;
 		}
 
 		animator.SetFloat("Y", rb2D.velocity.y);
@@ -74,7 +75,6 @@ public class PlayerController : MonoBehaviour
 
 	private void Jump()
 	{
-
 		//if we press the button and have jumps remaining
 		if (Input.GetButtonDown("Jump") && currentJumps < maxJumps)
 		{
@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour
 			velocity.y = jumpPower;
 			rb2D.velocity = velocity;
 			var newEffect = Instantiate(jumpEffect, transform.position, Quaternion.identity);
+			rb2D.sharedMaterial = noFriction;
 			Destroy(newEffect, 1);
 		}
 
@@ -100,18 +101,20 @@ public class PlayerController : MonoBehaviour
 		//Restet our counter if we are on the ground.
 		if (onGround)
 		{
+			Camera.main.GetComponent<CameraController>().UpdateYPosition(true);
 			currentJumps = 0;
 			if (!footTrail.isPlaying)
 			{
 				//Shake(0.1f, 0.1f);
 				footTrail.Play();
-				animator.SetTrigger("Land");
 				var newEffect = Instantiate(jumpEffect, transform.position, Quaternion.identity);
 				Destroy(newEffect, 1);
 			}
+			animator.SetTrigger("Land");
 		}
 		else
 		{
+			Camera.main.GetComponent<CameraController>().UpdateYPosition(false);
 			if (footTrail.isPlaying)
 				footTrail.Stop();
 		}
@@ -151,12 +154,11 @@ public class PlayerController : MonoBehaviour
 
 		if (onGround)
 		{
-			if (Vector3.Distance(soundPos, transform.position) > 1f)
+			if (Vector3.Distance(soundPos, transform.position) > 1.2f)
 			{
 				//Playsound
-				//AudioManager.Instance.PlayPlayerRun(gameObject);
+				audioManager.audios.PlayPlayerRun(gameObject);
 
-				Debug.Log("Play sound");
 				soundPos = transform.position;
 			}
 		}
