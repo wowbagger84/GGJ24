@@ -17,10 +17,12 @@ public class Bubble : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+
 		DOTween.To(() => myFloat, x => myFloat = x, 5, time).OnUpdate(UpdateCollider);
 
 		if (jokeLine)
 		{
+			Destroy(gameObject, 10);
 			transform.DOMoveY(transform.position.y + 2, time * jokeLineTime).SetEase(Ease.InSine).OnComplete(() => Destroy(gameObject));
 			transform.GetComponentInChildren<Image>().DOFade(0, time * jokeLineTime / 2).SetDelay(jokeLineTime / 2).SetEase(Ease.InSine);
 			GetComponentInChildren<TextMeshProUGUI>().DOFade(0, time * jokeLineTime / 2).SetDelay(jokeLineTime / 2).SetEase(Ease.InSine);

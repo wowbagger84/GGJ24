@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 	[Header("Jump")]
 	public float jumpPower = 8; //How strong our jump is
 	public float groundCheckDistance = 0.05f; //how far outsie our character we should raycast
+	public GameObject jumpEffect; //Particle effect for jumping
 
 	bool onGround = true; //checks if we are on the ground
 	float groundCheckLenght; //Length of the raycast
@@ -80,6 +81,8 @@ public class PlayerController : MonoBehaviour
 			var velocity = rb2D.velocity;
 			velocity.y = jumpPower;
 			rb2D.velocity = velocity;
+			var newEffect = Instantiate(jumpEffect, transform.position, Quaternion.identity);
+			Destroy(newEffect, 1);
 		}
 
 		if (Input.GetButtonUp("Jump") && rb2D.velocity.y > 0)
@@ -97,7 +100,11 @@ public class PlayerController : MonoBehaviour
 		{
 			currentJumps = 0;
 			if (!footTrail.isPlaying)
+			{
 				footTrail.Play();
+				var newEffect = Instantiate(jumpEffect, transform.position, Quaternion.identity);
+				Destroy(newEffect, 1);
+			}
 		}
 		else
 		{
