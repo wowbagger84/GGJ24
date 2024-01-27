@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -19,11 +20,11 @@ public class EnemyScript : MonoBehaviour
         rb.angularVelocity = rollSpeed;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Bubble"))
         {
-            Destroy(gameObject);
+            transform.DOScale(0, 0.3f).SetEase(Ease.InSine).OnComplete(() => Destroy(gameObject));
         }
     }
 }
