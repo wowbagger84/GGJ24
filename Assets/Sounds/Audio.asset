@@ -21,18 +21,18 @@ MonoBehaviour:
     Path: event:/playerRun
   playerJump:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -273351483
+      Data2: 1208023833
+      Data3: -1143774312
+      Data4: 1414624653
+    Path: event:/playerJump
   playerDoubleJump:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 618854229
+      Data2: 1315419432
+      Data3: -1814707548
+      Data4: -1117929672
+    Path: event:/playerDoubleJump
   playerVoice:
     Guid:
       Data1: 0
@@ -42,11 +42,11 @@ MonoBehaviour:
     Path: 
   playerSpriteFlip:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1351031591
+      Data2: 1279189876
+      Data3: 244671380
+      Data4: 1307119350
+    Path: event:/playerSpriteFlip
   punchlineAppear:
     Guid:
       Data1: 0
@@ -105,8 +105,8 @@ MonoBehaviour:
     Path: 
   mainMusic:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1736663244
+      Data2: 1110944671
+      Data3: -716178262
+      Data4: 1291153883
+    Path: event:/music
