@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 5143866365648065785}
   - component: {fileID: 8146014738797307047}
   - component: {fileID: 852635805966965152}
+  - component: {fileID: 8644292581880083247}
   m_Layer: 0
   m_Name: punch-bubble 1
   m_TagString: Bubble
@@ -251,6 +252,34 @@ MonoBehaviour:
   jokeLineTime: 8
   jokeLine: 0
   text: PUNCHLINE!
+  hitPrefab: {fileID: 3987383630858829260, guid: 46184f9522c65ca46abc074cc3e9d3db, type: 3}
+--- !u!50 &8644292581880083247
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3458202301227089447}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &3606252757629674168
 GameObject:
   m_ObjectHideFlags: 0

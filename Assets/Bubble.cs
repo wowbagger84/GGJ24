@@ -10,6 +10,8 @@ public class Bubble : MonoBehaviour
 	public bool jokeLine = false;
 	public string text = "PUNCHLINE!";
 
+	public GameObject hitPrefab;
+
 	float myFloat = 0;
 	BoxCollider2D myCollider;
 	float size = 0;
@@ -17,10 +19,12 @@ public class Bubble : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+
 		DOTween.To(() => myFloat, x => myFloat = x, 5, time).OnUpdate(UpdateCollider);
 
 		if (jokeLine)
 		{
+			Destroy(gameObject, 10);
 			transform.DOMoveY(transform.position.y + 2, time * jokeLineTime).SetEase(Ease.InSine).OnComplete(() => Destroy(gameObject));
 			transform.GetComponentInChildren<Image>().DOFade(0, time * jokeLineTime / 2).SetDelay(jokeLineTime / 2).SetEase(Ease.InSine);
 			GetComponentInChildren<TextMeshProUGUI>().DOFade(0, time * jokeLineTime / 2).SetDelay(jokeLineTime / 2).SetEase(Ease.InSine);
@@ -53,5 +57,14 @@ public class Bubble : MonoBehaviour
 	private void OnDestroy()
 	{
 		DOTween.KillAll();
+	}
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (!collision.gameObject.CompareTag("Player"))
+		{
+			var effect = Instantiate(hitPrefab, collision.contacts[0].point, transform.rotation);
+			Destroy(effect, 2);
+		}
 	}
 }
