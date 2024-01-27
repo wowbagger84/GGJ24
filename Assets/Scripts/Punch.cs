@@ -20,7 +20,7 @@ public class Punch : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		string path = "Assets/Jokes/jokes.txt";
+		string path = "Text/jokes";
 		jokes = ParseJokes(path);
 		joke = jokes[Random.Range(0, jokes.Count)];
 	}
@@ -30,7 +30,7 @@ public class Punch : MonoBehaviour
 		List<List<string>> parsedJokes = new List<List<string>>();
 		var jokeLines = new List<string>();
 
-		foreach (var line in File.ReadLines(filePath))
+		foreach (var line in Resources.Load<TextAsset>(filePath).ToString().Split('\n'))
 		{
 			if (string.IsNullOrWhiteSpace(line))
 			{
@@ -53,7 +53,6 @@ public class Punch : MonoBehaviour
 
 		return parsedJokes;
 	}
-
 
 	// Update is called once per frame
 	void Update()

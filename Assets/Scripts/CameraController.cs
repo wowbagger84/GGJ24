@@ -26,6 +26,7 @@ public class CameraController : MonoBehaviour
 		float desiredPositionX = target.position.x + offset.x;
 		float desiredPositionZ = target.position.z + offset.z;
 
+<<<<<<< Updated upstream
 		Vector3 desiredPosition = new Vector3(desiredPositionX, desiredPositionY, desiredPositionZ);
 		Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
 		transform.position = smoothedPosition;
@@ -36,4 +37,15 @@ public class CameraController : MonoBehaviour
 	{
 		updateYPosition = updatedYPosition;
 	}
+=======
+    Vector3 desiredPosition = new Vector3(desiredPositionX, desiredPositionY, desiredPositionZ);
+    Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+    transform.position = smoothedPosition;
+}
+
+    public void UpdateYPosition(bool updatedYPosition)
+    {
+        updateYPosition = updatedYPosition;
+    }
+>>>>>>> Stashed changes
 }
