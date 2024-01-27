@@ -75,5 +75,6 @@ public class Bubble : MonoBehaviour
 	private void OnDestroy()
 	{
 		transform.GetComponentInChildren<Image>().DOKill();
+		transform.DOKill();
 	}
 }

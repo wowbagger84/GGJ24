@@ -13,7 +13,7 @@ public class Audio : ScriptableObject
     public EventReference playerRun;
     public EventReference playerJump;
     public EventReference playerDoubleJump;
-    public EventReference playerVoice;
+    //public EventReference playerVoice;
     public EventReference playerSpriteFlip;
    
     // Weapon
@@ -23,7 +23,7 @@ public class Audio : ScriptableObject
     
     //Enemy
     public EventReference enemyRun;
-    public EventReference enemyVoice;
+    //public EventReference enemyVoice;
     public EventReference enemyDeath;
 
     //UI
@@ -50,10 +50,10 @@ public class Audio : ScriptableObject
         RuntimeManager.PlayOneShotAttached(playerDoubleJump, gameObject);
     }
 
-    public void PlayPlayerVoice(GameObject gameObject)
+    /*public void PlayPlayerVoice(GameObject gameObject)
     {
         RuntimeManager.PlayOneShotAttached(playerVoice, gameObject);
-    }
+    }*/
 
     public void PlayPlayerSpriteFlip(GameObject gameObject)
     {
@@ -82,10 +82,10 @@ public class Audio : ScriptableObject
         RuntimeManager.PlayOneShotAttached(enemyRun, gameObject);
     }
 
-    public void PlayEnemyVoice(GameObject gameObject)
+    /*public void PlayEnemyVoice(GameObject gameObject)
     {
         RuntimeManager.PlayOneShotAttached(enemyVoice, gameObject);
-    }
+    }*/
 
     public void PlayEnemyDeath(GameObject gameObject)
     {
