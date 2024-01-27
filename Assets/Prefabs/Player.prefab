@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5530887360808253639}
   - component: {fileID: 239683999557674144}
   - component: {fileID: 2503112675777902951}
-  - component: {fileID: 969999190897013209}
+  - component: {fileID: 8074822335442827438}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -172,7 +172,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.90625}
-  m_Size: {x: 0.77, y: 1.78}
+  m_Size: {x: 1.1875, y: 1.8125}
   m_Direction: 0
 --- !u!114 &2503112675777902951
 MonoBehaviour:
@@ -191,7 +191,7 @@ MonoBehaviour:
   deacceleration: 4
   jumpPower: 8
   groundCheckDistance: 0.1
---- !u!114 &969999190897013209
+--- !u!114 &8074822335442827438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,11 +200,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 74284748223735181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7826ecdffb8926143ac53710fcb2b998, type: 3}
+  m_Script: {fileID: 11500000, guid: 2da44266513e42b4f98f5364b885ab87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchPrefab: {fileID: 2336336561706601399, guid: e3ce2d0526084114db773ece691556b0, type: 3}
+  punchPrefab: {fileID: 3458202301227089447, guid: 208731ab174742b4982660ede544339e, type: 3}
+  jokeLinePrefab: {fileID: 3458202301227089447, guid: 49c61ed6b68cd0d4a9d33ff56d7dea52, type: 3}
   punchSpawn: {fileID: 9156500908473172178}
+  joke: []
+  jokeLineIndex: 0
 --- !u!1 &3079902020246753964
 GameObject:
   m_ObjectHideFlags: 0

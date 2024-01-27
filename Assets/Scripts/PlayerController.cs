@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
 	Animator animator;
 
+	ParticleSystem footTrail;
+
 	private void Start()
 	{
 		//Change project setting for raycast since they start inside colliders
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
 		rb2D = GetComponent<Rigidbody2D>(); //assign our ref.
 		sprite = GetComponent<SpriteRenderer>();
 		animator = GetComponent<Animator>();
+		footTrail = GetComponentInChildren<ParticleSystem>();
 
 		//Calculate player size based on our colliders, lenght of raycast
 		var collider = GetComponent<Collider2D>();
@@ -93,11 +96,13 @@ public class PlayerController : MonoBehaviour
 		if (onGround)
 		{
 			currentJumps = 0;
-			transform.GetChild(0).gameObject.SetActive(true);
+			if (!footTrail.isPlaying)
+				footTrail.Play();
 		}
 		else
 		{
-			transform.GetChild(0).gameObject.SetActive(false);
+			if (footTrail.isPlaying)
+				footTrail.Stop();
 		}
 	}
 
