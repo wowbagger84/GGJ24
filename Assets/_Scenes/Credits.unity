@@ -314,7 +314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Robert Esbj\xF6rnsson\nSusanne\nJakob\n\n\nThank you for playing!"
+  m_text: "Robert Esbj\xF6rnsson\nSusanne\nJacob Hell\n\n\n\nThank you for playing!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ff77c8999a0069428e7dcf44b82b7bf, type: 2}
   m_sharedMaterial: {fileID: 6086901988829499223, guid: 4ff77c8999a0069428e7dcf44b82b7bf, type: 2}
