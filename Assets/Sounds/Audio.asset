@@ -40,6 +40,13 @@ MonoBehaviour:
       Data3: 244671380
       Data4: 1307119350
     Path: event:/playerSpriteFlip
+  playerHurt:
+    Guid:
+      Data1: -480632167
+      Data2: 1136957875
+      Data3: 1403045544
+      Data4: 1042640185
+    Path: event:/playerHurt
   punchlineAppear:
     Guid:
       Data1: 2007505718

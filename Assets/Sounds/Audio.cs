@@ -15,6 +15,7 @@ public class Audio : ScriptableObject
 	public EventReference playerDoubleJump;
 	//public EventReference playerVoice;
 	public EventReference playerSpriteFlip;
+	public EventReference playerHurt;
 
 	// Weapon
 	public EventReference punchlineAppear;
@@ -60,6 +61,11 @@ public class Audio : ScriptableObject
 	public void PlayPlayerSpriteFlip(GameObject gameObject)
 	{
 		RuntimeManager.PlayOneShotAttached(playerSpriteFlip, gameObject);
+	}
+	
+	public void PlayPlayerHurt(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(playerHurt, gameObject);
 	}
 
 	//WEAPON FUNCTIONS
