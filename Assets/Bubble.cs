@@ -28,9 +28,10 @@ public class Bubble : MonoBehaviour
 		}
 		else
 		{
-			Destroy(gameObject, 20);
-			Invoke("Cleanup", 5);
-			transform.DOShakePosition(1.0f, 0.05f, 10, 90, false, false).SetDelay(4);
+			Invoke(nameof(CleanUp), 20);
+			float delay = Random.Range(3f, 5f);
+			Invoke(nameof(ActivateGravity), delay);
+			transform.DOShakePosition(0.8f, 0.05f, 10, 90, false, false).SetDelay(delay - 0.8f);
 		}
 
 		myCollider = GetComponent<BoxCollider2D>();
@@ -45,7 +46,15 @@ public class Bubble : MonoBehaviour
 		if (jokeLine)
 			GetComponentInChildren<Image>().GetComponent<RectTransform>().DOSizeDelta(new Vector2(size, 30), time).SetEase(Ease.OutSine);
 		else
-			GetComponentInChildren<Image>().GetComponent<RectTransform>().DOSizeDelta(new Vector2(size, 30), time).SetEase(Ease.OutBack);
+			GetComponentInChildren<Image>().GetComponent<RectTransform>().DOSizeDelta(new Vector2(size, 30), time / 2).SetEase(Ease.OutBack);
+	}
+
+	private void CleanUp()
+	{
+		if (Vector3.Distance(FindFirstObjectByType<PlayerController>().transform.position, transform.position) > 20)
+			Destroy(gameObject);
+		else
+			Invoke(nameof(CleanUp), 20);
 	}
 
 	private void UpdateCollider()
@@ -54,13 +63,10 @@ public class Bubble : MonoBehaviour
 		myCollider.size = new Vector2(myFloat, 0.5f);
 	}
 
-	void Cleanup()
+	void ActivateGravity()
 	{
-		if (!jokeLine)
-		{
-			GetComponent<Rigidbody2D>().isKinematic = false;
-			FindFirstObjectByType<AudioManager>()?.audios.PlayPunchlineDrop(gameObject);
-		}
+		GetComponent<Rigidbody2D>().isKinematic = false;
+		FindFirstObjectByType<AudioManager>()?.audios.PlayPunchlineDrop(gameObject);
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
