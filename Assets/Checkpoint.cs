@@ -9,7 +9,7 @@ public class Checkpoint : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		if (PlayerPrefs.GetFloat("checkpoint") == index && index != 0)
+		if (PlayerPrefs.GetFloat("checkpoint" + levelID) == index && index != 0)
 			FindFirstObjectByType<PlayerController>().transform.position = transform.position;
 	}
 
