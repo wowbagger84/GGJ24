@@ -29,7 +29,6 @@ public class Punch : MonoBehaviour
 			string path = "Text/jokes";
 			jokes = ParseJokes(path);
 			joke = jokes[Random.Range(0, jokes.Count)];
-			audioManager = FindObjectOfType<AudioManager>();
 		}
 		else
 		{
@@ -43,6 +42,7 @@ public class Punch : MonoBehaviour
 			jokes.Add(joke2);
 			joke = jokes[Random.Range(0, jokes.Count)];
 		}
+		audioManager = FindFirstObjectByType<AudioManager>();
 	}
 
 	List<List<string>> ParseJokes(string filePath)
@@ -93,7 +93,12 @@ public class Punch : MonoBehaviour
 			{
 				var newLine = Instantiate(punchPrefab, punchSpawn.position, transform.rotation);
 				newLine.GetComponent<Bubble>().text = joke[jokeLineIndex];
+
+				if (intro)
+					newLine.GetComponent<Bubble>().ActivateGravity(1.8f);
+
 				newLine.GetComponent<Bubble>().Init();
+
 				jokeLineIndex = 0;
 				joke = jokes[Random.Range(0, jokes.Count)];
 				timer = -punchCooldown;

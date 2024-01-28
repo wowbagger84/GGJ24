@@ -22,13 +22,14 @@ public class Audio : ScriptableObject
 	public EventReference punchlineDrop;
 
 	//Enemy
-	public EventReference enemyRun;
+	//public EventReference enemyRun;
 	//public EventReference enemyVoice;
 	public EventReference enemyDeath;
+	public EventReference enemyDebris;
 
 	//UI
-	public EventReference onMouseOver;
-	public EventReference onMouseClick;
+	//public EventReference onMouseOver;
+	//public EventReference onMouseClick;
 
 	//Music
 	public EventReference mainMusic;
@@ -77,10 +78,10 @@ public class Audio : ScriptableObject
 	}
 
 	//ENEMY FUNCTIONS
-	public void PlayEnemyRun(GameObject gameObject)
+	/*public void PlayEnemyRun(GameObject gameObject)
 	{
 		RuntimeManager.PlayOneShotAttached(enemyRun, gameObject);
-	}
+	}*/
 
 	/*public void PlayEnemyVoice(GameObject gameObject)
     {
@@ -91,9 +92,14 @@ public class Audio : ScriptableObject
 	{
 		RuntimeManager.PlayOneShotAttached(enemyDeath, gameObject);
 	}
+	
+	public void PlayEnemyDebris(GameObject gameObject)
+    	{
+    		RuntimeManager.PlayOneShotAttached(enemyDebris, gameObject);
+    	}
 
 	//UI FUNCTIONS
-	public void PlayOnMouseOver(GameObject gameObject)
+	/*public void PlayOnMouseOver(GameObject gameObject)
 	{
 		RuntimeManager.PlayOneShotAttached(onMouseOver, gameObject);
 	}
@@ -101,7 +107,7 @@ public class Audio : ScriptableObject
 	public void PlayOnMouseClick(GameObject gameObject)
 	{
 		RuntimeManager.PlayOneShotAttached(onMouseClick, gameObject);
-	}
+	}*/
 
 
 	//MUSIC FUNCTIONS
