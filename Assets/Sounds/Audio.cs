@@ -21,11 +21,12 @@ public class Audio : ScriptableObject
 	public EventReference punchlinePunch;
 	public EventReference punchlineDrop;
 
-	//Enemy
+	//Enemy & objects
 	//public EventReference enemyRun;
 	//public EventReference enemyVoice;
 	public EventReference enemyDeath;
-	public EventReference enemyDebris;
+	public EventReference wallSmash;
+	public EventReference bounce;
 
 	//UI
 	//public EventReference onMouseOver;
@@ -77,7 +78,7 @@ public class Audio : ScriptableObject
 		RuntimeManager.PlayOneShotAttached(punchlineDrop, gameObject);
 	}
 
-	//ENEMY FUNCTIONS
+	//ENEMY & OBJECT FUNCTIONS 
 	/*public void PlayEnemyRun(GameObject gameObject)
 	{
 		RuntimeManager.PlayOneShotAttached(enemyRun, gameObject);
@@ -93,10 +94,15 @@ public class Audio : ScriptableObject
 		RuntimeManager.PlayOneShotAttached(enemyDeath, gameObject);
 	}
 	
-	public void PlayEnemyDebris(GameObject gameObject)
+	public void PlayWallSmash(GameObject gameObject)
     	{
-    		RuntimeManager.PlayOneShotAttached(enemyDebris, gameObject);
+    		RuntimeManager.PlayOneShotAttached(wallSmash, gameObject);
     	}
+	
+	public void PlayBounce(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(bounce, gameObject);
+	}
 
 	//UI FUNCTIONS
 	/*public void PlayOnMouseOver(GameObject gameObject)

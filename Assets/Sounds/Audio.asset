@@ -68,13 +68,20 @@ MonoBehaviour:
       Data3: 73258136
       Data4: 448748166
     Path: event:/enemyDeath
-  enemyDebris:
+  wallSmash:
     Guid:
       Data1: 1141774763
       Data2: 1199773894
       Data3: -1199493994
       Data4: 2090955324
-    Path: event:/enemyDebris
+    Path: event:/wallSmash
+  bounce:
+    Guid:
+      Data1: 1419075129
+      Data2: 1209471088
+      Data3: 563943323
+      Data4: -431673975
+    Path: event:/bounce
   mainMusic:
     Guid:
       Data1: 1736663244
