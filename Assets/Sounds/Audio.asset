@@ -89,6 +89,13 @@ MonoBehaviour:
       Data3: 563943323
       Data4: -431673975
     Path: event:/bounce
+  monster:
+    Guid:
+      Data1: 1097941664
+      Data2: 1322549617
+      Data3: 458057131
+      Data4: 1082318195
+    Path: event:/monster
   mainMusic:
     Guid:
       Data1: 1736663244
