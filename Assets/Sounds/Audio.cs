@@ -100,6 +100,10 @@ public class Audio : ScriptableObject
 	{
 		RuntimeManager.PlayOneShotAttached(enemyDeath, gameObject);
 	}
+	public void PlayPlayerDeath(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(playerHurt, gameObject);
+	}
 	
 	public void PlayWallSmash(GameObject gameObject)
     	{
