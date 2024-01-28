@@ -17,6 +17,7 @@ public class Bubble : MonoBehaviour
 	float size = 0;
 	bool coolDown = false;
 	float time2 = 0.2f;
+	bool activated = false;
 
 	// Start is called before the first frame update
 	public void Init()
@@ -32,8 +33,7 @@ public class Bubble : MonoBehaviour
 		{
 			Invoke(nameof(CleanUp), 20);
 			float delay = Random.Range(3f, 5f);
-			Invoke(nameof(ActivateGravity), delay);
-			transform.DOShakePosition(0.8f, 0.05f, 10, 90, false, false).SetDelay(delay - 0.8f);
+			ActivateGravity(delay);
 		}
 
 		myCollider = GetComponent<BoxCollider2D>();
@@ -49,6 +49,15 @@ public class Bubble : MonoBehaviour
 			GetComponentInChildren<Image>().GetComponent<RectTransform>().DOSizeDelta(new Vector2(size, 30), time).SetEase(Ease.OutSine);
 		else
 			GetComponentInChildren<Image>().GetComponent<RectTransform>().DOSizeDelta(new Vector2(size, 30), time / 2).SetEase(Ease.OutBack);
+	}
+
+	public void ActivateGravity(float delay)
+	{
+		if (activated)
+			return;
+		activated = true;
+		Invoke(nameof(ActivateGravity), delay);
+		transform.DOShakePosition(0.8f, 0.05f, 10, 90, false, false).SetDelay(delay - 0.8f);
 	}
 
 	private void CleanUp()
@@ -83,6 +92,11 @@ public class Bubble : MonoBehaviour
 			var effect = Instantiate(hitPrefab, collision.contacts[0].point, transform.rotation);
 			Destroy(effect, 2);
 			Invoke(nameof(ResetCoolDown), 0.5f);
+
+			if (collision.gameObject.CompareTag("Dummy"))
+			{
+				FindFirstObjectByType<AudioManager>()?.audios.PlayEnemyDeath(gameObject);
+			}
 		}
 	}
 
