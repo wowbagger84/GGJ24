@@ -8,10 +8,6 @@ public class Spikes : MonoBehaviour
 {
 	public GameObject deathEffect;
 	// Start is called before the first frame update
-	void Start()
-	{
-
-	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -22,7 +18,14 @@ public class Spikes : MonoBehaviour
 			//collision.gameObject.GetComponent<Player>().Die();
 			Invoke(nameof(ReloadScene), 1f);
 			var newEffect = Instantiate(deathEffect, (collision.transform.position + transform.position) / 2, Quaternion.identity);
+			var newEffect2 = Instantiate(deathEffect, collision.transform.position + transform.up, Quaternion.identity);
 			Destroy(newEffect, 1f);
+			Destroy(newEffect2, 1f);
+			collision.gameObject.GetComponent<PlayerController>().enabled = false;
+			collision.gameObject.GetComponent<Punch>().enabled = false;
+			collision.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
+
+			//Todo: Add death sound
 		}
 		if (collision.gameObject.CompareTag("Dummy"))
 		{
