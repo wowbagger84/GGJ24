@@ -54,7 +54,7 @@ public class EnemyScript : MonoBehaviour
 			Destroy(newEffect, 1);
 		}
 
-		if (canPlayAudio && distanceToPlayer < 20)
+		if (canPlayAudio && distanceToPlayer < 10)
 		{
 			audioManager.audios.PlayBounce(gameObject);
 			canPlayAudio = false;
