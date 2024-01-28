@@ -7,14 +7,18 @@ using UnityEngine.SceneManagement;
 public class Spikes : MonoBehaviour
 {
 	public GameObject deathEffect;
+	AudioManager audioManager;
 	// Start is called before the first frame update
+
+	private void Start()
+	{
+		audioManager = FindObjectOfType<AudioManager>();
+	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player"))
 		{
-			//AudioManager audioManager = FindObjectOfType<AudioManager>();
-			//audioManager.audios.PlayPlayerDeath(gameObject);
 			//collision.gameObject.GetComponent<Player>().Die();
 			Invoke(nameof(ReloadScene), 1f);
 			var newEffect = Instantiate(deathEffect, (collision.transform.position + transform.position) / 2, Quaternion.identity);
@@ -26,6 +30,7 @@ public class Spikes : MonoBehaviour
 			collision.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
 
 			//Todo: Add death sound
+			audioManager.audios.PlayPlayerDeath(gameObject);
 		}
 		if (collision.gameObject.CompareTag("Dummy"))
 		{
