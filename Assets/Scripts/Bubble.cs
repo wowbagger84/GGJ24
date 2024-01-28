@@ -15,6 +15,8 @@ public class Bubble : MonoBehaviour
 	float myFloat = 0;
 	BoxCollider2D myCollider;
 	float size = 0;
+	bool coolDown = false;
+	float time2 = 0.2f;
 
 	// Start is called before the first frame update
 	public void Init()
@@ -39,7 +41,7 @@ public class Bubble : MonoBehaviour
 		//adjust time according to the length of the text
 		size = text.Length * 8 + 30;
 
-		DOTween.To(() => myFloat, x => myFloat = x, size / 60, time).OnUpdate(UpdateCollider);
+		DOTween.To(() => myFloat, x => myFloat = x, size / 60, time / 2).OnUpdate(UpdateCollider);
 
 		GetComponentInChildren<TextMeshProUGUI>().DOText(text, time);
 
@@ -71,16 +73,32 @@ public class Bubble : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (!collision.gameObject.CompareTag("Player"))
+		if (!collision.gameObject.CompareTag("Player") && !coolDown)
 		{
+			var rb2d = collision.gameObject.GetComponent<Rigidbody2D>();
+			if (rb2d != null && time2 > 0)
+				rb2d.AddForce(new Vector2(10, 0), ForceMode2D.Impulse);
+
+			coolDown = true;
 			var effect = Instantiate(hitPrefab, collision.contacts[0].point, transform.rotation);
 			Destroy(effect, 2);
+			Invoke(nameof(ResetCoolDown), 0.5f);
 		}
+	}
+
+	private void ResetCoolDown()
+	{
+		coolDown = false;
 	}
 
 	private void OnDestroy()
 	{
 		transform.GetComponentInChildren<Image>().DOKill();
 		transform.DOKill();
+	}
+
+	private void Update()
+	{
+		time2 -= Time.deltaTime;
 	}
 }
