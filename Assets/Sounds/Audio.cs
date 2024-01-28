@@ -1,7 +1,7 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
-using FMODUnity;
-using FMOD.Studio;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
@@ -9,113 +9,113 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 public class Audio : ScriptableObject
 
 {
-    //Player
-    public EventReference playerRun;
-    public EventReference playerJump;
-    public EventReference playerDoubleJump;
-    //public EventReference playerVoice;
-    public EventReference playerSpriteFlip;
-   
-    // Weapon
-    public EventReference punchlineAppear;
-    public EventReference punchlinePunch;
-    public EventReference punchlineDrop;
-    
-    //Enemy
-    public EventReference enemyRun;
-    //public EventReference enemyVoice;
-    public EventReference enemyDeath;
+	//Player
+	public EventReference playerRun;
+	public EventReference playerJump;
+	public EventReference playerDoubleJump;
+	//public EventReference playerVoice;
+	public EventReference playerSpriteFlip;
 
-    //UI
-    public EventReference onMouseOver;
-    public EventReference onMouseClick;
-    
-    //Music
-    public EventReference mainMusic;
-    private EventInstance mainMusicInstance;
+	// Weapon
+	public EventReference punchlineAppear;
+	public EventReference punchlinePunch;
+	public EventReference punchlineDrop;
 
-    //PLAYER FUNCTIONS
-    public void PlayPlayerRun(GameObject gameObject)
-    {
-        RuntimeManager.PlayOneShotAttached(playerRun, gameObject);
-    }
+	//Enemy
+	public EventReference enemyRun;
+	//public EventReference enemyVoice;
+	public EventReference enemyDeath;
 
-    public void PlayPlayerJump(GameObject gameObject)
-    {
-        RuntimeManager.PlayOneShotAttached(playerJump, gameObject);
-    }
+	//UI
+	public EventReference onMouseOver;
+	public EventReference onMouseClick;
 
-    public void PlayPlayerDoubleJump(GameObject gameObject)
-    {
-        RuntimeManager.PlayOneShotAttached(playerDoubleJump, gameObject);
-    }
+	//Music
+	public EventReference mainMusic;
+	private EventInstance mainMusicInstance;
 
-    /*public void PlayPlayerVoice(GameObject gameObject)
+	//PLAYER FUNCTIONS
+	public void PlayPlayerRun(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(playerRun, gameObject);
+	}
+
+	public void PlayPlayerJump(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(playerJump, gameObject);
+	}
+
+	public void PlayPlayerDoubleJump(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(playerDoubleJump, gameObject);
+	}
+
+	/*public void PlayPlayerVoice(GameObject gameObject)
     {
         RuntimeManager.PlayOneShotAttached(playerVoice, gameObject);
     }*/
 
-    public void PlayPlayerSpriteFlip(GameObject gameObject)
-    {
-        RuntimeManager.PlayOneShotAttached(playerSpriteFlip, gameObject);
-    }
-    
-    //WEAPON FUNCTIONS
-    public void PlayPunchlineAppear(GameObject gameObject)
-    {
-        RuntimeManager.PlayOneShotAttached(punchlineAppear, gameObject);   
-    }
-    
-    public void PlayPunchlinePunch(GameObject gameObject)
-    {
-        RuntimeManager.PlayOneShotAttached(punchlinePunch, gameObject);   
-    }
+	public void PlayPlayerSpriteFlip(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(playerSpriteFlip, gameObject);
+	}
 
-    public void PlayPunchlineDrop(GameObject gameObject)
-    {
-        RuntimeManager.PlayOneShotAttached(punchlineDrop, gameObject);
-    }
-    
-    //ENEMY FUNCTIONS
-    public void PlayEnemyRun(GameObject gameObject)
-    {
-        RuntimeManager.PlayOneShotAttached(enemyRun, gameObject);
-    }
+	//WEAPON FUNCTIONS
+	public void PlayPunchlineAppear(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(punchlineAppear, gameObject);
+	}
 
-    /*public void PlayEnemyVoice(GameObject gameObject)
+	public void PlayPunchlinePunch(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(punchlinePunch, gameObject);
+	}
+
+	public void PlayPunchlineDrop(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(punchlineDrop, gameObject);
+	}
+
+	//ENEMY FUNCTIONS
+	public void PlayEnemyRun(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(enemyRun, gameObject);
+	}
+
+	/*public void PlayEnemyVoice(GameObject gameObject)
     {
         RuntimeManager.PlayOneShotAttached(enemyVoice, gameObject);
     }*/
 
-    public void PlayEnemyDeath(GameObject gameObject)
-    {
-        RuntimeManager.PlayOneShotAttached(enemyDeath, gameObject);
-    }
-    
-    //UI FUNCTIONS
-    public void PlayOnMouseOver(GameObject gameObject)
-    {
-        RuntimeManager.PlayOneShotAttached(onMouseOver, gameObject);
-    }
+	public void PlayEnemyDeath(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(enemyDeath, gameObject);
+	}
 
-    public void PlayOnMouseClick(GameObject gameObject)
-    {
-        RuntimeManager.PlayOneShotAttached(onMouseClick, gameObject);
-    }
+	//UI FUNCTIONS
+	public void PlayOnMouseOver(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(onMouseOver, gameObject);
+	}
 
-    
-    //MUSIC FUNCTIONS
-    public void StartMusic(GameObject gameObject)
-    {
-        mainMusicInstance = RuntimeManager.CreateInstance(mainMusic);
-        RuntimeManager.AttachInstanceToGameObject(mainMusicInstance, gameObject.transform);
+	public void PlayOnMouseClick(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(onMouseClick, gameObject);
+	}
 
-        mainMusicInstance.start();
-    }
 
-    public void StopMusic(GameObject gameObject)
-    {
-        mainMusicInstance.stop(STOP_MODE.ALLOWFADEOUT);
-        mainMusicInstance.release();
-    }
+	//MUSIC FUNCTIONS
+	public void StartMusic(GameObject gameObject)
+	{
+		mainMusicInstance = RuntimeManager.CreateInstance(mainMusic);
+		RuntimeManager.AttachInstanceToGameObject(mainMusicInstance, gameObject.transform);
+
+		mainMusicInstance.start();
+	}
+
+	public void StopMusic(GameObject gameObject)
+	{
+		mainMusicInstance.stop(STOP_MODE.ALLOWFADEOUT);
+		mainMusicInstance.release();
+	}
 }
