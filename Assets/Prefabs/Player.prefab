@@ -193,7 +193,7 @@ MonoBehaviour:
   groundCheckDistance: 0.1
   jumpEffect: {fileID: 2695149104436889358, guid: 7219d67c9ab1c7d41a65a94f74c2bb43, type: 3}
   noFriction: {fileID: 6200000, guid: bd07950d07c98c04cab53a4a5c00d2f6, type: 2}
-  distanceBetweenSoundStep: 1.2
+  distanceBetweenSoundStep: 1.9
 --- !u!114 &8074822335442827438
 MonoBehaviour:
   m_ObjectHideFlags: 0
