@@ -28,6 +28,7 @@ public class Audio : ScriptableObject
 	public EventReference enemyDeath;
 	public EventReference wallSmash;
 	public EventReference bounce;
+	public EventReference monster;
 
 	//UI
 	//public EventReference onMouseOver;
@@ -109,6 +110,11 @@ public class Audio : ScriptableObject
 	{
 		RuntimeManager.PlayOneShotAttached(bounce, gameObject);
 	}
+	
+	public void PlayMonster(GameObject gameObject)
+	{
+		RuntimeManager.PlayOneShotAttached(monster, gameObject);
+	} 
 
 	//UI FUNCTIONS
 	/*public void PlayOnMouseOver(GameObject gameObject)
