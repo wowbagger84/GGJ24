@@ -20,6 +20,6 @@ public class AudioManager : MonoBehaviour
 			return;
 		}
 
-		//audios.StartMusic(gameObject);
+		audios.StartMusic(gameObject);
 	}
 }
