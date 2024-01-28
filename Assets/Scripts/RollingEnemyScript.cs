@@ -41,7 +41,7 @@ public class EnemyScript : MonoBehaviour
 
 	}
 
-	async void OnCollisionEnter2D(Collision2D other)
+	void OnCollisionEnter2D(Collision2D other)
 	{
 		if (other.gameObject.CompareTag("Bubble"))
 		{
