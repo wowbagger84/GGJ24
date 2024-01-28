@@ -33,13 +33,6 @@ MonoBehaviour:
       Data3: -1814707548
       Data4: -1117929672
     Path: event:/playerDoubleJump
-  playerVoice:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   playerSpriteFlip:
     Guid:
       Data1: -1351031591
@@ -68,20 +61,6 @@ MonoBehaviour:
       Data3: 723354535
       Data4: -954235450
     Path: event:/punchlineDrop
-  enemyRun:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  enemyVoice:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   enemyDeath:
     Guid:
       Data1: -881820170
@@ -89,20 +68,13 @@ MonoBehaviour:
       Data3: 73258136
       Data4: 448748166
     Path: event:/enemyDeath
-  onMouseOver:
+  enemyDebris:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  onMouseClick:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1141774763
+      Data2: 1199773894
+      Data3: -1199493994
+      Data4: 2090955324
+    Path: event:/enemyDebris
   mainMusic:
     Guid:
       Data1: 1736663244

@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
 	public PhysicsMaterial2D noFriction;
 
+	public float distanceBetweenSoundStep = 1.2f;
+
 	private void Start()
 	{
 		//Change project setting for raycast since they start inside colliders
@@ -176,7 +178,7 @@ public class PlayerController : MonoBehaviour
 
 		if (onGround)
 		{
-			if (Vector3.Distance(soundPos, transform.position) > 1.2f)
+			if (Vector3.Distance(soundPos, transform.position) > distanceBetweenSoundStep)
 			{
 				//Playsound
 				audioManager.audios.PlayPlayerRun(gameObject);
