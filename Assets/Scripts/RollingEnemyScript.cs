@@ -40,7 +40,7 @@ public class EnemyScript : MonoBehaviour
 
 			transform.DOScale(0, 0.3f).SetEase(Ease.InSine).OnComplete(() => Destroy(gameObject));
 
-			deathSplosion.Play();
+			//deathSplosion.Play();
 			animator.SetTrigger("Death");
 			Destroy(newEffect, 1);
 		}

@@ -11,16 +11,24 @@ public class ControllerCheck : MonoBehaviour
 	void Start()
 	{
 		string[] joystickNames = Input.GetJoystickNames();
+		//Debug.Log("Joysticks found: " + joystickNames.Length);
+		//for (int i = 0; i < joystickNames.Length; i++)
+		//{
+		//	if (!string.IsNullOrEmpty(joystickNames[i]))
+		//	{
+		//		Debug.Log("Gamepad found: " + joystickNames[i]);
+		//		keyboardControls.SetActive(false);
+		//		controllerControls.SetActive(true);
+		//	}
+		//}
 
-		for (int i = 0; i < joystickNames.Length; i++)
+		if (joystickNames.Length > 0)
 		{
-			if (!string.IsNullOrEmpty(joystickNames[i]))
-			{
-				Debug.Log("Gamepad found: " + joystickNames[i]);
-				keyboardControls.SetActive(false);
-				controllerControls.SetActive(true);
-			}
+			//Debug.Log("Gamepad found: " + joystickNames[0]);
+			keyboardControls.SetActive(false);
+			controllerControls.SetActive(true);
 		}
+
 	}
 
 }
