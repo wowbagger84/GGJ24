@@ -11,6 +11,7 @@ public class PressAnyKey : MonoBehaviour
 	void Start()
 	{
 		transform.DOScale(1.1f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetDelay(cooldown);
+		PlayerPrefs.DeleteAll();
 	}
 
 	private void Update()
