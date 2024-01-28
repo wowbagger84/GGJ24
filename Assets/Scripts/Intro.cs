@@ -12,6 +12,6 @@ public class Intro : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
+		UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
 	}
 }
